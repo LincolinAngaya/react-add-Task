@@ -5,6 +5,7 @@ import { useState } from "react";
 
 //import React from "react";---used when using class;
 function App() {
+  const  [showAddTask, setShowAddTask] = useState(false)
   const  [tasks, setTasks] = useState(
     [
       {
@@ -50,8 +51,8 @@ const addTask =(task) =>{
 
   return (
     <div className="container">
-         <AddTask  onAdd={addTask}/>
-        <Header title='Task Tracker'/>
+         {showAddTask && <AddTask  onAdd={addTask}/>}
+        <Header title='Task Tracker'onAdd={() => setShowAddTask(!showAddTask)} showAdd={showAddTask}/>
 
         {tasks.length > 0 ? 
         <Tasks tasks={tasks} onDelete={deleteTask} onToggle={toggleReminder}/>
