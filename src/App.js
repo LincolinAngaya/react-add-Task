@@ -40,10 +40,17 @@ const toggleReminder = (id) =>{
       )
       )
 }
+//addtask
+const addTask =(task) =>{
+  const id = Math.floor(Math.random()* 10000)+1
+  console.log()
+   const newTask = {id, ...task}
+  setTasks([...tasks, newTask])
+}
 
   return (
     <div className="container">
-         <AddTask />
+         <AddTask  onAdd={addTask}/>
         <Header title='Task Tracker'/>
 
         {tasks.length > 0 ? 
